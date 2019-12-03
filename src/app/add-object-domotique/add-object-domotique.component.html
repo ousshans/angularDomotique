@@ -1,0 +1,20 @@
+<div *ngIf="getOpen()">
+  <div *ngIf="valider" class="alert alert-success alert-dismissible fade show" role="alert">
+    Domo ajouté avec success !
+    <button type="button" class="close" (click)="valider=false" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <form (ngSubmit)="onSubmit(f.value);f.reset()" #f="ngForm" >
+    <div class="form-group">
+      <label for="nomDObject">Nom</label>
+      <input type="text" class="form-control" name="nomDObject" id="nomDObject" aria-describedby="emailHelp" ngModel>
+    </div>
+    <div class="form-group">
+      <label for="emplacementDobject">emplacement</label>
+      <input type="text" class="form-control" name="emplacementDobject" id="emplacementDobject" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

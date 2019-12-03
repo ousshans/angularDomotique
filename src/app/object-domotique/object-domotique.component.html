@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">nom d objet</th>
+      <th scope="col">emplacement</th>
+      <th scope="col">status</th>
+      <th scope="col">connecter</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor="let item of domos" [ngClass]="{bgc: item.statusDobjet===true,bgc2:item.statusDobjet===false}">
+        <td> <a [routerLink]="[item.id]" > {{item.nomDObject}} </a> </td>
+        <td> {{item.emplacementDobject}} </td>
+        <td> <span *ngIf="item.statusDobjet" class="badge badge-pill badge-success">allumé</span>
+          <span *ngIf="!item.statusDobjet" class="badge badge-pill badge-danger">éteint</span> </td>
+        <td> <span *ngIf="item.estConnecter" class="badge badge-pill badge-primary">connecter</span>
+          <span *ngIf="!item.estConnecter" class="badge badge-pill badge-warning">deconnecter</span> </td>
+          <td>
+           <div class="row">
+             <div *ngIf="!item.statusDobjet" class="col-md-5">
+              <button class="btn btn-success btn-sm"   (click)="allumer(item.id)">allumé</button>
+             </div>
+             <div *ngIf="item.statusDobjet" class="col-md-5">
+              <button class="btn btn-danger btn-sm" (click)="eteindre(item.id)">éteitn</button>
+             </div>
+             <div *ngIf="!item.estConnecter" class="col-md-5">
+              <button class="btn btn-success btn-sm"   (click)="connecter(item.id)">connecter</button>
+             </div>
+             <div *ngIf="item.estConnecter" class="col-md-5">
+              <button class="btn btn-warning btn-sm" (click)="deconnecter(item.id)">deconnecter</button>
+             </div>
+           </div>
+          </td>
+    </tr>
+  </tbody>
+</table>
+
+
